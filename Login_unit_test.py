@@ -26,3 +26,6 @@ class LoginTest(unittest.TestCase):
         cls.driver.close()
         cls.driver.quit()
         print("Test Completed")
+
+if __name__ == '__main__':
+    unittest.main()
