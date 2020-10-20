@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 3.2.1 (Python 3.8.3 on win32)" generated="20200710 11:39:26.326" rpa="false">
+<suite id="s1" name="Hybrid" source="C:\Users\HOME\PycharmProjects\Training\Hybrid_Demo\hybrid.robot">
+<test id="s1-t1" name="HybridTest">
+<kw name="Comparing both values of Location">
+<kw name="Open Browser" library="SeleniumLibrary">
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<arguments>
+<arg>${LOGIN URL}</arg>
+<arg>${browser}</arg>
+</arguments>
+<msg timestamp="20200710 11:39:27.358" level="INFO">Opening browser 'chrome' to base url 'https://github.com/HariniYadav'.</msg>
+<status status="PASS" starttime="20200710 11:39:27.358" endtime="20200710 11:39:35.641"></status>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20200710 11:39:35.642" endtime="20200710 11:39:36.158"></status>
+</kw>
+<kw name="Title Should Be" library="SeleniumLibrary">
+<doc>Verifies that the current page title equals ``title``.</doc>
+<arguments>
+<arg>HariniYadav · GitHub</arg>
+</arguments>
+<msg timestamp="20200710 11:39:36.285" level="INFO">Page title is 'HariniYadav · GitHub'.</msg>
+<status status="PASS" starttime="20200710 11:39:36.159" endtime="20200710 11:39:36.286"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>class:UnderlineNav-item</arg>
+</arguments>
+<msg timestamp="20200710 11:39:36.288" level="INFO">Clicking element 'class:UnderlineNav-item'.</msg>
+<status status="PASS" starttime="20200710 11:39:36.287" endtime="20200710 11:39:36.677"></status>
+</kw>
+<kw name="Get Text" library="SeleniumLibrary">
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<arguments>
+<arg>xpath://*[@id="js-pjax-container"]/div[2]/div/div[1]/div/div[4]/div[2]/ul/li[1]/span</arg>
+</arguments>
+<assign>
+<var>${location_in_UI}</var>
+</assign>
+<msg timestamp="20200710 11:39:36.832" level="INFO">${location_in_UI} = Bangalore</msg>
+<status status="PASS" starttime="20200710 11:39:36.678" endtime="20200710 11:39:36.832"></status>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>${location_in_UI}</arg>
+</arguments>
+<status status="PASS" starttime="20200710 11:39:36.833" endtime="20200710 11:39:36.834"></status>
+</kw>
+<kw name="Close Browser" library="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20200710 11:39:36.834" endtime="20200710 11:39:39.325"></status>
+</kw>
+<kw name="Create Session" library="RequestsLibrary">
+<doc>Create Session: create a HTTP session to a server</doc>
+<arguments>
+<arg>mysession</arg>
+<arg>${base_url}</arg>
+</arguments>
+<msg timestamp="20200710 11:39:39.325" level="INFO">Creating Session using : alias=mysession, url=https://api.github.com, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20200710 11:39:39.325" endtime="20200710 11:39:39.325"></status>
+</kw>
+<kw name="Get Request" library="RequestsLibrary">
+<doc>Send a GET request on the session object found using the
+given `alias`</doc>
+<arguments>
+<arg>mysession</arg>
+<arg>users/HariniYadav</arg>
+</arguments>
+<assign>
+<var>${response}</var>
+</assign>
+<msg timestamp="20200710 11:39:39.902" level="INFO">GET Request : url=https://api.github.com/users/HariniYadav 
+ path_url=/users/HariniYadav 
+ headers={'User-Agent': 'python-requests/2.24.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg timestamp="20200710 11:39:39.902" level="INFO">GET Response : url=https://api.github.com/users/HariniYadav 
+ status=200, reason=OK 
+ body={"login":"HariniYadav","id":67147998,"node_id":"MDQ6VXNlcjY3MTQ3OTk4","avatar_url":"https://avatars2.githubusercontent.com/u/67147998?v=4","gravatar_id":"","url":"https://api.github.com/users/HariniYadav","html_url":"https://github.com/HariniYadav","followers_url":"https://api.github.com/users/HariniYadav/followers","following_url":"https://api.github.com/users/HariniYadav/following{/other_user}","gists_url":"https://api.github.com/users/HariniYadav/gists{/gist_id}","starred_url":"https://api.github.com/users/HariniYadav/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/HariniYadav/subscriptions","organizations_url":"https://api.github.com/users/HariniYadav/orgs","repos_url":"https://api.github.com/users/HariniYadav/repos","events_url":"https://api.github.com/users/HariniYadav/events{/privacy}","received_events_url":"https://api.github.com/users/HariniYadav/received_events","type":"User","site_admin":false,"name":null,"company":null,"blog":"","location":"Bangalore","email":null,"hireable":null,"bio":null,"twitter_username":null,"public_repos":2,"public_gists":0,"followers":0,"following":0,"created_at":"2020-06-19T10:20:16Z","updated_at":"2020-07-06T17:40:44Z"} 
+ </msg>
+<msg timestamp="20200710 11:39:39.902" level="INFO">c:\users\home\pycharmprojects\training\venv\lib\site-packages\urllib3\connectionpool.py:979: InsecureRequestWarning: Unverified HTTPS request is being made to host 'api.github.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings
+  warnings.warn(</msg>
+<msg timestamp="20200710 11:39:39.902" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20200710 11:39:39.325" endtime="20200710 11:39:39.902"></status>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<doc>Converts the given item to a Unicode string.</doc>
+<arguments>
+<arg>${response.status_code}</arg>
+</arguments>
+<assign>
+<var>${actual_code}</var>
+</assign>
+<msg timestamp="20200710 11:39:39.917" level="INFO">${actual_code} = 200</msg>
+<status status="PASS" starttime="20200710 11:39:39.917" endtime="20200710 11:39:39.917"></status>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<doc>Fails if the given objects are unequal.</doc>
+<arguments>
+<arg>${actual_code}</arg>
+<arg>${expected_code}</arg>
+</arguments>
+<status status="PASS" starttime="20200710 11:39:39.917" endtime="20200710 11:39:39.917"></status>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<doc>Converts the given item to a Unicode string.</doc>
+<arguments>
+<arg>${response.content}</arg>
+</arguments>
+<assign>
+<var>${body}</var>
+</assign>
+<msg timestamp="20200710 11:39:39.917" level="INFO">${body} = {"login":"HariniYadav","id":67147998,"node_id":"MDQ6VXNlcjY3MTQ3OTk4","avatar_url":"https://avatars2.githubusercontent.com/u/67147998?v=4","gravatar_id":"","url":"https://api.github.com/users/HariniYa...</msg>
+<status status="PASS" starttime="20200710 11:39:39.917" endtime="20200710 11:39:39.917"></status>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<arguments>
+<arg>${response.json()}</arg>
+</arguments>
+<assign>
+<var>${json}</var>
+</assign>
+<msg timestamp="20200710 11:39:39.917" level="INFO">${json} = {'login': 'HariniYadav', 'id': 67147998, 'node_id': 'MDQ6VXNlcjY3MTQ3OTk4', 'avatar_url': 'https://avatars2.githubusercontent.com/u/67147998?v=4', 'gravatar_id': '', 'url': 'https://api.github.com/use...</msg>
+<status status="PASS" starttime="20200710 11:39:39.917" endtime="20200710 11:39:39.917"></status>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<arguments>
+<arg>${json["location"]}</arg>
+</arguments>
+<assign>
+<var>${location_in_API}</var>
+</assign>
+<msg timestamp="20200710 11:39:39.917" level="INFO">${location_in_API} = Bangalore</msg>
+<status status="PASS" starttime="20200710 11:39:39.917" endtime="20200710 11:39:39.917"></status>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>${location_in_API}</arg>
+</arguments>
+<status status="PASS" starttime="20200710 11:39:39.917" endtime="20200710 11:39:39.933"></status>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<doc>Fails if the given objects are unequal.</doc>
+<arguments>
+<arg>${location_in_UI}</arg>
+<arg>${location_in_API}</arg>
+</arguments>
+<status status="PASS" starttime="20200710 11:39:39.933" endtime="20200710 11:39:39.933"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>Test is Successful</arg>
+</arguments>
+<msg timestamp="20200710 11:39:39.933" level="INFO">Test is Successful</msg>
+<status status="PASS" starttime="20200710 11:39:39.933" endtime="20200710 11:39:39.933"></status>
+</kw>
+<status status="PASS" starttime="20200710 11:39:27.358" endtime="20200710 11:39:39.933"></status>
+</kw>
+<status status="PASS" starttime="20200710 11:39:27.358" endtime="20200710 11:39:39.933" critical="yes"></status>
+</test>
+<doc>This is a Hybrid test case which involves usage of both UI and API</doc>
+<status status="PASS" starttime="20200710 11:39:26.342" endtime="20200710 11:39:39.949"></status>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0">Critical Tests</stat>
+<stat pass="1" fail="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" id="s1" name="Hybrid">Hybrid</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

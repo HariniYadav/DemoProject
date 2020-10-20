@@ -1,0 +1,1205 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Rebot 3.2.1 (Python 3.8.3 on win32)" generated="20200712 18:50:33.045" rpa="false">
+<suite id="s1" name="API DEMO" source="C:\Users\HOME\PycharmProjects\Training\API_DEMO">
+<suite id="s1-s1" name="GetRepo" source="C:\Users\HOME\PycharmProjects\Training\API_DEMO\GetRepo.robot">
+<kw name="Log" library="BuiltIn" type="setup">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>&lt;a href="http://localhost:63342/Training/TestData/UsersData.xlsx"&gt;Input Data File&lt;a&gt;</arg>
+<arg>html=True</arg>
+</arguments>
+<msg timestamp="20200712 18:50:29.577" level="INFO" html="yes">&lt;a href="http://localhost:63342/Training/TestData/UsersData.xlsx"&gt;Input Data File&lt;a&gt;</msg>
+<status status="PASS" starttime="20200712 18:50:29.577" endtime="20200712 18:50:29.577"></status>
+</kw>
+<kw name="Log" library="BuiltIn" type="teardown">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>closing the session</arg>
+</arguments>
+<msg timestamp="20200712 18:50:32.499" level="INFO">closing the session</msg>
+<status status="PASS" starttime="20200712 18:50:32.499" endtime="20200712 18:50:32.499"></status>
+</kw>
+<test id="s1-s1-t1" name="Get Repos Test with users/HariniYadav">
+<kw name="Log" library="BuiltIn" type="setup">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>Started execution of test case</arg>
+</arguments>
+<msg timestamp="20200712 18:50:29.592" level="INFO">Started execution of test case</msg>
+<status status="PASS" starttime="20200712 18:50:29.592" endtime="20200712 18:50:29.592"></status>
+</kw>
+<kw name="Get Repo Test">
+<arguments>
+<arg>users/HariniYadav</arg>
+<arg>200</arg>
+</arguments>
+<kw name="Get Repo" library="Resources">
+<doc>Retriving the repositories a user having</doc>
+<arguments>
+<arg>${user}</arg>
+<arg>${expected_code}</arg>
+</arguments>
+<kw name="Create Session" library="RequestsLibrary">
+<doc>Create Session: create a HTTP session to a server</doc>
+<arguments>
+<arg>mysession</arg>
+<arg>${base_url}</arg>
+</arguments>
+<msg timestamp="20200712 18:50:29.592" level="INFO">Creating Session using : alias=mysession, url=https://api.github.com, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20200712 18:50:29.592" endtime="20200712 18:50:29.592"></status>
+</kw>
+<kw name="Get Request" library="RequestsLibrary">
+<doc>Send a GET request on the session object found using the
+given `alias`</doc>
+<arguments>
+<arg>mysession</arg>
+<arg>${user}</arg>
+</arguments>
+<assign>
+<var>${response}</var>
+</assign>
+<msg timestamp="20200712 18:50:30.248" level="INFO">GET Request : url=https://api.github.com/users/HariniYadav 
+ path_url=/users/HariniYadav 
+ headers={'User-Agent': 'python-requests/2.24.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg timestamp="20200712 18:50:30.248" level="INFO">GET Response : url=https://api.github.com/users/HariniYadav 
+ status=200, reason=OK 
+ body={"login":"HariniYadav","id":67147998,"node_id":"MDQ6VXNlcjY3MTQ3OTk4","avatar_url":"https://avatars2.githubusercontent.com/u/67147998?v=4","gravatar_id":"","url":"https://api.github.com/users/HariniYadav","html_url":"https://github.com/HariniYadav","followers_url":"https://api.github.com/users/HariniYadav/followers","following_url":"https://api.github.com/users/HariniYadav/following{/other_user}","gists_url":"https://api.github.com/users/HariniYadav/gists{/gist_id}","starred_url":"https://api.github.com/users/HariniYadav/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/HariniYadav/subscriptions","organizations_url":"https://api.github.com/users/HariniYadav/orgs","repos_url":"https://api.github.com/users/HariniYadav/repos","events_url":"https://api.github.com/users/HariniYadav/events{/privacy}","received_events_url":"https://api.github.com/users/HariniYadav/received_events","type":"User","site_admin":false,"name":null,"company":null,"blog":"","location":"Bangalore","email":null,"hireable":null,"bio":null,"twitter_username":null,"public_repos":3,"public_gists":0,"followers":0,"following":0,"created_at":"2020-06-19T10:20:16Z","updated_at":"2020-07-06T17:40:44Z"} 
+ </msg>
+<msg timestamp="20200712 18:50:30.248" level="INFO">c:\users\home\pycharmprojects\training\venv\lib\site-packages\urllib3\connectionpool.py:979: InsecureRequestWarning: Unverified HTTPS request is being made to host 'api.github.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings
+  warnings.warn(</msg>
+<msg timestamp="20200712 18:50:30.248" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20200712 18:50:29.592" endtime="20200712 18:50:30.264"></status>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<doc>Converts the given item to a Unicode string.</doc>
+<arguments>
+<arg>${response.status_code}</arg>
+</arguments>
+<assign>
+<var>${actual_code}</var>
+</assign>
+<msg timestamp="20200712 18:50:30.264" level="INFO">${actual_code} = 200</msg>
+<status status="PASS" starttime="20200712 18:50:30.264" endtime="20200712 18:50:30.264"></status>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<doc>Fails if the given objects are unequal.</doc>
+<arguments>
+<arg>${actual_code}</arg>
+<arg>${expected_code}</arg>
+</arguments>
+<status status="PASS" starttime="20200712 18:50:30.264" endtime="20200712 18:50:30.264"></status>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<doc>Converts the given item to a Unicode string.</doc>
+<arguments>
+<arg>${response.content}</arg>
+</arguments>
+<assign>
+<var>${body}</var>
+</assign>
+<msg timestamp="20200712 18:50:30.264" level="INFO">${body} = {"login":"HariniYadav","id":67147998,"node_id":"MDQ6VXNlcjY3MTQ3OTk4","avatar_url":"https://avatars2.githubusercontent.com/u/67147998?v=4","gravatar_id":"","url":"https://api.github.com/users/HariniYa...</msg>
+<status status="PASS" starttime="20200712 18:50:30.264" endtime="20200712 18:50:30.264"></status>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<arguments>
+<arg>${response.json()}</arg>
+</arguments>
+<assign>
+<var>${json}</var>
+</assign>
+<msg timestamp="20200712 18:50:30.264" level="INFO">${json} = {'login': 'HariniYadav', 'id': 67147998, 'node_id': 'MDQ6VXNlcjY3MTQ3OTk4', 'avatar_url': 'https://avatars2.githubusercontent.com/u/67147998?v=4', 'gravatar_id': '', 'url': 'https://api.github.com/use...</msg>
+<status status="PASS" starttime="20200712 18:50:30.264" endtime="20200712 18:50:30.264"></status>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<arguments>
+<arg>${json["public_repos"]}</arg>
+</arguments>
+<assign>
+<var>${repos}</var>
+</assign>
+<msg timestamp="20200712 18:50:30.264" level="INFO">${repos} = 3</msg>
+<status status="PASS" starttime="20200712 18:50:30.264" endtime="20200712 18:50:30.264"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>The user has ${repos} repositories</arg>
+</arguments>
+<msg timestamp="20200712 18:50:30.280" level="INFO">The user has 3 repositories</msg>
+<status status="PASS" starttime="20200712 18:50:30.264" endtime="20200712 18:50:30.280"></status>
+</kw>
+<status status="PASS" starttime="20200712 18:50:29.592" endtime="20200712 18:50:30.280"></status>
+</kw>
+<status status="PASS" starttime="20200712 18:50:29.592" endtime="20200712 18:50:30.280"></status>
+</kw>
+<kw name="Log" library="BuiltIn" type="teardown">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>Completion of executing the test case</arg>
+</arguments>
+<msg timestamp="20200712 18:50:30.280" level="INFO">Completion of executing the test case</msg>
+<status status="PASS" starttime="20200712 18:50:30.280" endtime="20200712 18:50:30.280"></status>
+</kw>
+<status status="PASS" starttime="20200712 18:50:29.577" endtime="20200712 18:50:30.280" critical="yes"></status>
+</test>
+<test id="s1-s1-t2" name="Get Repos Test with users/Apurva8">
+<kw name="Log" library="BuiltIn" type="setup">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>Started execution of test case</arg>
+</arguments>
+<msg timestamp="20200712 18:50:30.280" level="INFO">Started execution of test case</msg>
+<status status="PASS" starttime="20200712 18:50:30.280" endtime="20200712 18:50:30.280"></status>
+</kw>
+<kw name="Get Repo Test">
+<arguments>
+<arg>users/Apurva8</arg>
+<arg>200</arg>
+</arguments>
+<kw name="Get Repo" library="Resources">
+<doc>Retriving the repositories a user having</doc>
+<arguments>
+<arg>${user}</arg>
+<arg>${expected_code}</arg>
+</arguments>
+<kw name="Create Session" library="RequestsLibrary">
+<doc>Create Session: create a HTTP session to a server</doc>
+<arguments>
+<arg>mysession</arg>
+<arg>${base_url}</arg>
+</arguments>
+<msg timestamp="20200712 18:50:30.295" level="INFO">Creating Session using : alias=mysession, url=https://api.github.com, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20200712 18:50:30.295" endtime="20200712 18:50:30.295"></status>
+</kw>
+<kw name="Get Request" library="RequestsLibrary">
+<doc>Send a GET request on the session object found using the
+given `alias`</doc>
+<arguments>
+<arg>mysession</arg>
+<arg>${user}</arg>
+</arguments>
+<assign>
+<var>${response}</var>
+</assign>
+<msg timestamp="20200712 18:50:30.874" level="INFO">GET Request : url=https://api.github.com/users/Apurva8 
+ path_url=/users/Apurva8 
+ headers={'User-Agent': 'python-requests/2.24.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg timestamp="20200712 18:50:30.874" level="INFO">GET Response : url=https://api.github.com/users/Apurva8 
+ status=200, reason=OK 
+ body={"login":"Apurva8","id":30017467,"node_id":"MDQ6VXNlcjMwMDE3NDY3","avatar_url":"https://avatars0.githubusercontent.com/u/30017467?v=4","gravatar_id":"","url":"https://api.github.com/users/Apurva8","html_url":"https://github.com/Apurva8","followers_url":"https://api.github.com/users/Apurva8/followers","following_url":"https://api.github.com/users/Apurva8/following{/other_user}","gists_url":"https://api.github.com/users/Apurva8/gists{/gist_id}","starred_url":"https://api.github.com/users/Apurva8/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/Apurva8/subscriptions","organizations_url":"https://api.github.com/users/Apurva8/orgs","repos_url":"https://api.github.com/users/Apurva8/repos","events_url":"https://api.github.com/users/Apurva8/events{/privacy}","received_events_url":"https://api.github.com/users/Apurva8/received_events","type":"User","site_admin":false,"name":null,"company":null,"blog":"","location":null,"email":null,"hireable":null,"bio":null,"twitter_username":null,"public_repos":1,"public_gists":0,"followers":0,"following":0,"created_at":"2017-07-09T08:17:20Z","updated_at":"2020-07-09T08:03:50Z"} 
+ </msg>
+<msg timestamp="20200712 18:50:30.889" level="INFO">c:\users\home\pycharmprojects\training\venv\lib\site-packages\urllib3\connectionpool.py:979: InsecureRequestWarning: Unverified HTTPS request is being made to host 'api.github.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings
+  warnings.warn(</msg>
+<msg timestamp="20200712 18:50:30.889" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20200712 18:50:30.295" endtime="20200712 18:50:30.889"></status>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<doc>Converts the given item to a Unicode string.</doc>
+<arguments>
+<arg>${response.status_code}</arg>
+</arguments>
+<assign>
+<var>${actual_code}</var>
+</assign>
+<msg timestamp="20200712 18:50:30.889" level="INFO">${actual_code} = 200</msg>
+<status status="PASS" starttime="20200712 18:50:30.889" endtime="20200712 18:50:30.889"></status>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<doc>Fails if the given objects are unequal.</doc>
+<arguments>
+<arg>${actual_code}</arg>
+<arg>${expected_code}</arg>
+</arguments>
+<status status="PASS" starttime="20200712 18:50:30.889" endtime="20200712 18:50:30.889"></status>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<doc>Converts the given item to a Unicode string.</doc>
+<arguments>
+<arg>${response.content}</arg>
+</arguments>
+<assign>
+<var>${body}</var>
+</assign>
+<msg timestamp="20200712 18:50:30.889" level="INFO">${body} = {"login":"Apurva8","id":30017467,"node_id":"MDQ6VXNlcjMwMDE3NDY3","avatar_url":"https://avatars0.githubusercontent.com/u/30017467?v=4","gravatar_id":"","url":"https://api.github.com/users/Apurva8","ht...</msg>
+<status status="PASS" starttime="20200712 18:50:30.889" endtime="20200712 18:50:30.889"></status>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<arguments>
+<arg>${response.json()}</arg>
+</arguments>
+<assign>
+<var>${json}</var>
+</assign>
+<msg timestamp="20200712 18:50:30.889" level="INFO">${json} = {'login': 'Apurva8', 'id': 30017467, 'node_id': 'MDQ6VXNlcjMwMDE3NDY3', 'avatar_url': 'https://avatars0.githubusercontent.com/u/30017467?v=4', 'gravatar_id': '', 'url': 'https://api.github.com/users/A...</msg>
+<status status="PASS" starttime="20200712 18:50:30.889" endtime="20200712 18:50:30.889"></status>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<arguments>
+<arg>${json["public_repos"]}</arg>
+</arguments>
+<assign>
+<var>${repos}</var>
+</assign>
+<msg timestamp="20200712 18:50:30.889" level="INFO">${repos} = 1</msg>
+<status status="PASS" starttime="20200712 18:50:30.889" endtime="20200712 18:50:30.889"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>The user has ${repos} repositories</arg>
+</arguments>
+<msg timestamp="20200712 18:50:30.905" level="INFO">The user has 1 repositories</msg>
+<status status="PASS" starttime="20200712 18:50:30.905" endtime="20200712 18:50:30.905"></status>
+</kw>
+<status status="PASS" starttime="20200712 18:50:30.295" endtime="20200712 18:50:30.905"></status>
+</kw>
+<status status="PASS" starttime="20200712 18:50:30.280" endtime="20200712 18:50:30.905"></status>
+</kw>
+<kw name="Log" library="BuiltIn" type="teardown">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>Completion of executing the test case</arg>
+</arguments>
+<msg timestamp="20200712 18:50:30.905" level="INFO">Completion of executing the test case</msg>
+<status status="PASS" starttime="20200712 18:50:30.905" endtime="20200712 18:50:30.905"></status>
+</kw>
+<status status="PASS" starttime="20200712 18:50:30.280" endtime="20200712 18:50:30.905" critical="yes"></status>
+</test>
+<test id="s1-s1-t3" name="Get Repos Test with users/Tom">
+<kw name="Log" library="BuiltIn" type="setup">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>Started execution of test case</arg>
+</arguments>
+<msg timestamp="20200712 18:50:30.905" level="INFO">Started execution of test case</msg>
+<status status="PASS" starttime="20200712 18:50:30.905" endtime="20200712 18:50:30.905"></status>
+</kw>
+<kw name="Get Repo Test">
+<arguments>
+<arg>users/Tom</arg>
+<arg>200</arg>
+</arguments>
+<kw name="Get Repo" library="Resources">
+<doc>Retriving the repositories a user having</doc>
+<arguments>
+<arg>${user}</arg>
+<arg>${expected_code}</arg>
+</arguments>
+<kw name="Create Session" library="RequestsLibrary">
+<doc>Create Session: create a HTTP session to a server</doc>
+<arguments>
+<arg>mysession</arg>
+<arg>${base_url}</arg>
+</arguments>
+<msg timestamp="20200712 18:50:30.920" level="INFO">Creating Session using : alias=mysession, url=https://api.github.com, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20200712 18:50:30.920" endtime="20200712 18:50:30.920"></status>
+</kw>
+<kw name="Get Request" library="RequestsLibrary">
+<doc>Send a GET request on the session object found using the
+given `alias`</doc>
+<arguments>
+<arg>mysession</arg>
+<arg>${user}</arg>
+</arguments>
+<assign>
+<var>${response}</var>
+</assign>
+<msg timestamp="20200712 18:50:31.499" level="INFO">GET Request : url=https://api.github.com/users/Tom 
+ path_url=/users/Tom 
+ headers={'User-Agent': 'python-requests/2.24.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg timestamp="20200712 18:50:31.499" level="INFO">GET Response : url=https://api.github.com/users/Tom 
+ status=200, reason=OK 
+ body={"login":"tom","id":748,"node_id":"MDQ6VXNlcjc0OA==","avatar_url":"https://avatars1.githubusercontent.com/u/748?v=4","gravatar_id":"","url":"https://api.github.com/users/tom","html_url":"https://github.com/tom","followers_url":"https://api.github.com/users/tom/followers","following_url":"https://api.github.com/users/tom/following{/other_user}","gists_url":"https://api.github.com/users/tom/gists{/gist_id}","starred_url":"https://api.github.com/users/tom/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/tom/subscriptions","organizations_url":"https://api.github.com/users/tom/orgs","repos_url":"https://api.github.com/users/tom/repos","events_url":"https://api.github.com/users/tom/events{/privacy}","received_events_url":"https://api.github.com/users/tom/received_events","type":"User","site_admin":false,"name":"Tom Malone","company":null,"blog":"","location":null,"email":null,"hireable":null,"bio":null,"twitter_username":null,"public_repos":11,"public_gists":2,"followers":24,"following":3,"created_at":"2008-02-24T18:44:45Z","updated_at":"2020-07-11T12:18:28Z"} 
+ </msg>
+<msg timestamp="20200712 18:50:31.499" level="INFO">c:\users\home\pycharmprojects\training\venv\lib\site-packages\urllib3\connectionpool.py:979: InsecureRequestWarning: Unverified HTTPS request is being made to host 'api.github.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings
+  warnings.warn(</msg>
+<msg timestamp="20200712 18:50:31.499" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20200712 18:50:30.920" endtime="20200712 18:50:31.499"></status>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<doc>Converts the given item to a Unicode string.</doc>
+<arguments>
+<arg>${response.status_code}</arg>
+</arguments>
+<assign>
+<var>${actual_code}</var>
+</assign>
+<msg timestamp="20200712 18:50:31.514" level="INFO">${actual_code} = 200</msg>
+<status status="PASS" starttime="20200712 18:50:31.514" endtime="20200712 18:50:31.514"></status>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<doc>Fails if the given objects are unequal.</doc>
+<arguments>
+<arg>${actual_code}</arg>
+<arg>${expected_code}</arg>
+</arguments>
+<status status="PASS" starttime="20200712 18:50:31.514" endtime="20200712 18:50:31.514"></status>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<doc>Converts the given item to a Unicode string.</doc>
+<arguments>
+<arg>${response.content}</arg>
+</arguments>
+<assign>
+<var>${body}</var>
+</assign>
+<msg timestamp="20200712 18:50:31.514" level="INFO">${body} = {"login":"tom","id":748,"node_id":"MDQ6VXNlcjc0OA==","avatar_url":"https://avatars1.githubusercontent.com/u/748?v=4","gravatar_id":"","url":"https://api.github.com/users/tom","html_url":"https://githu...</msg>
+<status status="PASS" starttime="20200712 18:50:31.514" endtime="20200712 18:50:31.514"></status>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<arguments>
+<arg>${response.json()}</arg>
+</arguments>
+<assign>
+<var>${json}</var>
+</assign>
+<msg timestamp="20200712 18:50:31.514" level="INFO">${json} = {'login': 'tom', 'id': 748, 'node_id': 'MDQ6VXNlcjc0OA==', 'avatar_url': 'https://avatars1.githubusercontent.com/u/748?v=4', 'gravatar_id': '', 'url': 'https://api.github.com/users/tom', 'html_url': '...</msg>
+<status status="PASS" starttime="20200712 18:50:31.514" endtime="20200712 18:50:31.514"></status>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<arguments>
+<arg>${json["public_repos"]}</arg>
+</arguments>
+<assign>
+<var>${repos}</var>
+</assign>
+<msg timestamp="20200712 18:50:31.514" level="INFO">${repos} = 11</msg>
+<status status="PASS" starttime="20200712 18:50:31.514" endtime="20200712 18:50:31.514"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>The user has ${repos} repositories</arg>
+</arguments>
+<msg timestamp="20200712 18:50:31.514" level="INFO">The user has 11 repositories</msg>
+<status status="PASS" starttime="20200712 18:50:31.514" endtime="20200712 18:50:31.514"></status>
+</kw>
+<status status="PASS" starttime="20200712 18:50:30.905" endtime="20200712 18:50:31.514"></status>
+</kw>
+<status status="PASS" starttime="20200712 18:50:30.905" endtime="20200712 18:50:31.514"></status>
+</kw>
+<kw name="Log" library="BuiltIn" type="teardown">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>Completion of executing the test case</arg>
+</arguments>
+<msg timestamp="20200712 18:50:31.514" level="INFO">Completion of executing the test case</msg>
+<status status="PASS" starttime="20200712 18:50:31.514" endtime="20200712 18:50:31.514"></status>
+</kw>
+<status status="PASS" starttime="20200712 18:50:30.905" endtime="20200712 18:50:31.514" critical="yes"></status>
+</test>
+<test id="s1-s1-t4" name="Get Repos Test with users/Robin">
+<kw name="Log" library="BuiltIn" type="setup">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>Started execution of test case</arg>
+</arguments>
+<msg timestamp="20200712 18:50:31.530" level="INFO">Started execution of test case</msg>
+<status status="PASS" starttime="20200712 18:50:31.530" endtime="20200712 18:50:31.530"></status>
+</kw>
+<kw name="Get Repo Test">
+<arguments>
+<arg>users/Robin</arg>
+<arg>200</arg>
+</arguments>
+<kw name="Get Repo" library="Resources">
+<doc>Retriving the repositories a user having</doc>
+<arguments>
+<arg>${user}</arg>
+<arg>${expected_code}</arg>
+</arguments>
+<kw name="Create Session" library="RequestsLibrary">
+<doc>Create Session: create a HTTP session to a server</doc>
+<arguments>
+<arg>mysession</arg>
+<arg>${base_url}</arg>
+</arguments>
+<msg timestamp="20200712 18:50:31.530" level="INFO">Creating Session using : alias=mysession, url=https://api.github.com, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20200712 18:50:31.530" endtime="20200712 18:50:31.530"></status>
+</kw>
+<kw name="Get Request" library="RequestsLibrary">
+<doc>Send a GET request on the session object found using the
+given `alias`</doc>
+<arguments>
+<arg>mysession</arg>
+<arg>${user}</arg>
+</arguments>
+<assign>
+<var>${response}</var>
+</assign>
+<msg timestamp="20200712 18:50:31.874" level="INFO">GET Request : url=https://api.github.com/users/Robin 
+ path_url=/users/Robin 
+ headers={'User-Agent': 'python-requests/2.24.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg timestamp="20200712 18:50:31.874" level="INFO">GET Response : url=https://api.github.com/users/Robin 
+ status=200, reason=OK 
+ body={"login":"robin","id":6545,"node_id":"MDQ6VXNlcjY1NDU=","avatar_url":"https://avatars3.githubusercontent.com/u/6545?v=4","gravatar_id":"","url":"https://api.github.com/users/robin","html_url":"https://github.com/robin","followers_url":"https://api.github.com/users/robin/followers","following_url":"https://api.github.com/users/robin/following{/other_user}","gists_url":"https://api.github.com/users/robin/gists{/gist_id}","starred_url":"https://api.github.com/users/robin/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/robin/subscriptions","organizations_url":"https://api.github.com/users/robin/orgs","repos_url":"https://api.github.com/users/robin/repos","events_url":"https://api.github.com/users/robin/events{/privacy}","received_events_url":"https://api.github.com/users/robin/received_events","type":"User","site_admin":false,"name":"Lu Yibin","company":"Freelance","blog":"http://robin.github.io","location":"Beijing, China","email":null,"hireable":true,"bio":"Aged Software Engineer\r\nOn\r\nmacOS/iOS/ruby/ruby on rails","twitter_username":null,"public_repos":28,"public_gists":24,"followers":559,"following":16,"created_at":"2008-04-11T08:52:39Z","updated_at":"2020-05-13T07:46:03Z"} 
+ </msg>
+<msg timestamp="20200712 18:50:31.874" level="INFO">c:\users\home\pycharmprojects\training\venv\lib\site-packages\urllib3\connectionpool.py:979: InsecureRequestWarning: Unverified HTTPS request is being made to host 'api.github.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings
+  warnings.warn(</msg>
+<msg timestamp="20200712 18:50:31.874" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20200712 18:50:31.530" endtime="20200712 18:50:31.874"></status>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<doc>Converts the given item to a Unicode string.</doc>
+<arguments>
+<arg>${response.status_code}</arg>
+</arguments>
+<assign>
+<var>${actual_code}</var>
+</assign>
+<msg timestamp="20200712 18:50:31.874" level="INFO">${actual_code} = 200</msg>
+<status status="PASS" starttime="20200712 18:50:31.874" endtime="20200712 18:50:31.889"></status>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<doc>Fails if the given objects are unequal.</doc>
+<arguments>
+<arg>${actual_code}</arg>
+<arg>${expected_code}</arg>
+</arguments>
+<status status="PASS" starttime="20200712 18:50:31.889" endtime="20200712 18:50:31.889"></status>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<doc>Converts the given item to a Unicode string.</doc>
+<arguments>
+<arg>${response.content}</arg>
+</arguments>
+<assign>
+<var>${body}</var>
+</assign>
+<msg timestamp="20200712 18:50:31.889" level="INFO">${body} = {"login":"robin","id":6545,"node_id":"MDQ6VXNlcjY1NDU=","avatar_url":"https://avatars3.githubusercontent.com/u/6545?v=4","gravatar_id":"","url":"https://api.github.com/users/robin","html_url":"https:/...</msg>
+<status status="PASS" starttime="20200712 18:50:31.889" endtime="20200712 18:50:31.889"></status>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<arguments>
+<arg>${response.json()}</arg>
+</arguments>
+<assign>
+<var>${json}</var>
+</assign>
+<msg timestamp="20200712 18:50:31.889" level="INFO">${json} = {'login': 'robin', 'id': 6545, 'node_id': 'MDQ6VXNlcjY1NDU=', 'avatar_url': 'https://avatars3.githubusercontent.com/u/6545?v=4', 'gravatar_id': '', 'url': 'https://api.github.com/users/robin', 'html_u...</msg>
+<status status="PASS" starttime="20200712 18:50:31.889" endtime="20200712 18:50:31.889"></status>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<arguments>
+<arg>${json["public_repos"]}</arg>
+</arguments>
+<assign>
+<var>${repos}</var>
+</assign>
+<msg timestamp="20200712 18:50:31.889" level="INFO">${repos} = 28</msg>
+<status status="PASS" starttime="20200712 18:50:31.889" endtime="20200712 18:50:31.889"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>The user has ${repos} repositories</arg>
+</arguments>
+<msg timestamp="20200712 18:50:31.889" level="INFO">The user has 28 repositories</msg>
+<status status="PASS" starttime="20200712 18:50:31.889" endtime="20200712 18:50:31.889"></status>
+</kw>
+<status status="PASS" starttime="20200712 18:50:31.530" endtime="20200712 18:50:31.889"></status>
+</kw>
+<status status="PASS" starttime="20200712 18:50:31.530" endtime="20200712 18:50:31.889"></status>
+</kw>
+<kw name="Log" library="BuiltIn" type="teardown">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>Completion of executing the test case</arg>
+</arguments>
+<msg timestamp="20200712 18:50:31.889" level="INFO">Completion of executing the test case</msg>
+<status status="PASS" starttime="20200712 18:50:31.889" endtime="20200712 18:50:31.889"></status>
+</kw>
+<status status="PASS" starttime="20200712 18:50:31.514" endtime="20200712 18:50:31.889" critical="yes"></status>
+</test>
+<test id="s1-s1-t5" name="Get Repos Test with users/Stella">
+<kw name="Log" library="BuiltIn" type="setup">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>Started execution of test case</arg>
+</arguments>
+<msg timestamp="20200712 18:50:31.889" level="INFO">Started execution of test case</msg>
+<status status="PASS" starttime="20200712 18:50:31.889" endtime="20200712 18:50:31.889"></status>
+</kw>
+<kw name="Get Repo Test">
+<arguments>
+<arg>users/Stella</arg>
+<arg>200</arg>
+</arguments>
+<kw name="Get Repo" library="Resources">
+<doc>Retriving the repositories a user having</doc>
+<arguments>
+<arg>${user}</arg>
+<arg>${expected_code}</arg>
+</arguments>
+<kw name="Create Session" library="RequestsLibrary">
+<doc>Create Session: create a HTTP session to a server</doc>
+<arguments>
+<arg>mysession</arg>
+<arg>${base_url}</arg>
+</arguments>
+<msg timestamp="20200712 18:50:31.905" level="INFO">Creating Session using : alias=mysession, url=https://api.github.com, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20200712 18:50:31.905" endtime="20200712 18:50:31.905"></status>
+</kw>
+<kw name="Get Request" library="RequestsLibrary">
+<doc>Send a GET request on the session object found using the
+given `alias`</doc>
+<arguments>
+<arg>mysession</arg>
+<arg>${user}</arg>
+</arguments>
+<assign>
+<var>${response}</var>
+</assign>
+<msg timestamp="20200712 18:50:32.483" level="INFO">GET Request : url=https://api.github.com/users/Stella 
+ path_url=/users/Stella 
+ headers={'User-Agent': 'python-requests/2.24.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg timestamp="20200712 18:50:32.483" level="INFO">GET Response : url=https://api.github.com/users/Stella 
+ status=200, reason=OK 
+ body={"login":"stella","id":37382,"node_id":"MDQ6VXNlcjM3Mzgy","avatar_url":"https://avatars2.githubusercontent.com/u/37382?v=4","gravatar_id":"","url":"https://api.github.com/users/stella","html_url":"https://github.com/stella","followers_url":"https://api.github.com/users/stella/followers","following_url":"https://api.github.com/users/stella/following{/other_user}","gists_url":"https://api.github.com/users/stella/gists{/gist_id}","starred_url":"https://api.github.com/users/stella/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/stella/subscriptions","organizations_url":"https://api.github.com/users/stella/orgs","repos_url":"https://api.github.com/users/stella/repos","events_url":"https://api.github.com/users/stella/events{/privacy}","received_events_url":"https://api.github.com/users/stella/received_events","type":"User","site_admin":false,"name":"Monitoring w/ Stella","company":"Blamey &amp; Stella Information Co.","blog":"https://www.blamestella.com/","location":"Kelowna, BC","email":null,"hireable":null,"bio":null,"twitter_username":null,"public_repos":2,"public_gists":0,"followers":8,"following":0,"created_at":"2008-11-30T18:22:31Z","updated_at":"2018-10-08T04:42:10Z"} 
+ </msg>
+<msg timestamp="20200712 18:50:32.483" level="INFO">c:\users\home\pycharmprojects\training\venv\lib\site-packages\urllib3\connectionpool.py:979: InsecureRequestWarning: Unverified HTTPS request is being made to host 'api.github.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings
+  warnings.warn(</msg>
+<msg timestamp="20200712 18:50:32.483" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20200712 18:50:31.905" endtime="20200712 18:50:32.483"></status>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<doc>Converts the given item to a Unicode string.</doc>
+<arguments>
+<arg>${response.status_code}</arg>
+</arguments>
+<assign>
+<var>${actual_code}</var>
+</assign>
+<msg timestamp="20200712 18:50:32.483" level="INFO">${actual_code} = 200</msg>
+<status status="PASS" starttime="20200712 18:50:32.483" endtime="20200712 18:50:32.483"></status>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<doc>Fails if the given objects are unequal.</doc>
+<arguments>
+<arg>${actual_code}</arg>
+<arg>${expected_code}</arg>
+</arguments>
+<status status="PASS" starttime="20200712 18:50:32.483" endtime="20200712 18:50:32.483"></status>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<doc>Converts the given item to a Unicode string.</doc>
+<arguments>
+<arg>${response.content}</arg>
+</arguments>
+<assign>
+<var>${body}</var>
+</assign>
+<msg timestamp="20200712 18:50:32.483" level="INFO">${body} = {"login":"stella","id":37382,"node_id":"MDQ6VXNlcjM3Mzgy","avatar_url":"https://avatars2.githubusercontent.com/u/37382?v=4","gravatar_id":"","url":"https://api.github.com/users/stella","html_url":"htt...</msg>
+<status status="PASS" starttime="20200712 18:50:32.483" endtime="20200712 18:50:32.483"></status>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<arguments>
+<arg>${response.json()}</arg>
+</arguments>
+<assign>
+<var>${json}</var>
+</assign>
+<msg timestamp="20200712 18:50:32.483" level="INFO">${json} = {'login': 'stella', 'id': 37382, 'node_id': 'MDQ6VXNlcjM3Mzgy', 'avatar_url': 'https://avatars2.githubusercontent.com/u/37382?v=4', 'gravatar_id': '', 'url': 'https://api.github.com/users/stella', 'ht...</msg>
+<status status="PASS" starttime="20200712 18:50:32.483" endtime="20200712 18:50:32.483"></status>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<arguments>
+<arg>${json["public_repos"]}</arg>
+</arguments>
+<assign>
+<var>${repos}</var>
+</assign>
+<msg timestamp="20200712 18:50:32.483" level="INFO">${repos} = 2</msg>
+<status status="PASS" starttime="20200712 18:50:32.483" endtime="20200712 18:50:32.483"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>The user has ${repos} repositories</arg>
+</arguments>
+<msg timestamp="20200712 18:50:32.483" level="INFO">The user has 2 repositories</msg>
+<status status="PASS" starttime="20200712 18:50:32.483" endtime="20200712 18:50:32.483"></status>
+</kw>
+<status status="PASS" starttime="20200712 18:50:31.905" endtime="20200712 18:50:32.483"></status>
+</kw>
+<status status="PASS" starttime="20200712 18:50:31.889" endtime="20200712 18:50:32.499"></status>
+</kw>
+<kw name="Log" library="BuiltIn" type="teardown">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>Completion of executing the test case</arg>
+</arguments>
+<msg timestamp="20200712 18:50:32.499" level="INFO">Completion of executing the test case</msg>
+<status status="PASS" starttime="20200712 18:50:32.499" endtime="20200712 18:50:32.499"></status>
+</kw>
+<status status="PASS" starttime="20200712 18:50:31.889" endtime="20200712 18:50:32.499" critical="yes"></status>
+</test>
+<status status="PASS" starttime="20200712 18:50:27.108" endtime="20200712 18:50:32.499"></status>
+</suite>
+<suite id="s1-s2" name="Invalid" source="C:\Users\HOME\PycharmProjects\Training\API_DEMO\Invalid.robot">
+<kw name="Log" library="BuiltIn" type="setup">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>&lt;a href="http://localhost:63342/Training/TestData/UsersData.xlsx"&gt;Input Data File&lt;a&gt;</arg>
+<arg>html=True</arg>
+</arguments>
+<msg timestamp="20200712 18:50:29.545" level="INFO" html="yes">&lt;a href="http://localhost:63342/Training/TestData/UsersData.xlsx"&gt;Input Data File&lt;a&gt;</msg>
+<status status="PASS" starttime="20200712 18:50:29.545" endtime="20200712 18:50:29.545"></status>
+</kw>
+<kw name="Log" library="BuiltIn" type="teardown">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>closing the session</arg>
+</arguments>
+<msg timestamp="20200712 18:50:30.842" level="INFO">closing the session</msg>
+<status status="PASS" starttime="20200712 18:50:30.842" endtime="20200712 18:50:30.842"></status>
+</kw>
+<test id="s1-s2-t1" name="Users Test with users/f7e9f">
+<kw name="Log" library="BuiltIn" type="setup">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>Started execution of test case</arg>
+</arguments>
+<msg timestamp="20200712 18:50:29.561" level="INFO">Started execution of test case</msg>
+<status status="PASS" starttime="20200712 18:50:29.561" endtime="20200712 18:50:29.561"></status>
+</kw>
+<kw name="InvalidTest">
+<arguments>
+<arg>users/f7e9f</arg>
+<arg>404</arg>
+</arguments>
+<kw name="Invalid Users" library="Resources">
+<doc>Valiating the negative test case by using invalid users</doc>
+<arguments>
+<arg>${user}</arg>
+<arg>${expected_code}</arg>
+</arguments>
+<kw name="Create Session" library="RequestsLibrary">
+<doc>Create Session: create a HTTP session to a server</doc>
+<arguments>
+<arg>mysession</arg>
+<arg>${base_url}</arg>
+</arguments>
+<msg timestamp="20200712 18:50:29.561" level="INFO">Creating Session using : alias=mysession, url=https://api.github.com, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20200712 18:50:29.561" endtime="20200712 18:50:29.561"></status>
+</kw>
+<kw name="Get Request" library="RequestsLibrary">
+<doc>Send a GET request on the session object found using the
+given `alias`</doc>
+<arguments>
+<arg>mysession</arg>
+<arg>${user}</arg>
+</arguments>
+<assign>
+<var>${response}</var>
+</assign>
+<msg timestamp="20200712 18:50:30.248" level="INFO">GET Request : url=https://api.github.com/users/f7e9f 
+ path_url=/users/f7e9f 
+ headers={'User-Agent': 'python-requests/2.24.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg timestamp="20200712 18:50:30.248" level="INFO">GET Response : url=https://api.github.com/users/f7e9f 
+ status=404, reason=Not Found 
+ body={"message":"Not Found","documentation_url":"https://developer.github.com/v3/users/#get-a-single-user"} 
+ </msg>
+<msg timestamp="20200712 18:50:30.248" level="INFO">c:\users\home\pycharmprojects\training\venv\lib\site-packages\urllib3\connectionpool.py:979: InsecureRequestWarning: Unverified HTTPS request is being made to host 'api.github.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings
+  warnings.warn(</msg>
+<msg timestamp="20200712 18:50:30.248" level="INFO">${response} = &lt;Response [404]&gt;</msg>
+<status status="PASS" starttime="20200712 18:50:29.561" endtime="20200712 18:50:30.264"></status>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<doc>Converts the given item to a Unicode string.</doc>
+<arguments>
+<arg>${response.status_code}</arg>
+</arguments>
+<assign>
+<var>${actual_code}</var>
+</assign>
+<msg timestamp="20200712 18:50:30.264" level="INFO">${actual_code} = 404</msg>
+<status status="PASS" starttime="20200712 18:50:30.264" endtime="20200712 18:50:30.264"></status>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<doc>Fails if the given objects are unequal.</doc>
+<arguments>
+<arg>${actual_code}</arg>
+<arg>${expected_code}</arg>
+</arguments>
+<status status="PASS" starttime="20200712 18:50:30.264" endtime="20200712 18:50:30.264"></status>
+</kw>
+<status status="PASS" starttime="20200712 18:50:29.561" endtime="20200712 18:50:30.264"></status>
+</kw>
+<status status="PASS" starttime="20200712 18:50:29.561" endtime="20200712 18:50:30.264"></status>
+</kw>
+<kw name="Log" library="BuiltIn" type="teardown">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>Completion of executing the test case</arg>
+</arguments>
+<msg timestamp="20200712 18:50:30.264" level="INFO">Completion of executing the test case</msg>
+<status status="PASS" starttime="20200712 18:50:30.264" endtime="20200712 18:50:30.264"></status>
+</kw>
+<status status="PASS" starttime="20200712 18:50:29.545" endtime="20200712 18:50:30.264" critical="yes"></status>
+</test>
+<test id="s1-s2-t2" name="Users Test with users/hqopq">
+<kw name="Log" library="BuiltIn" type="setup">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>Started execution of test case</arg>
+</arguments>
+<msg timestamp="20200712 18:50:30.280" level="INFO">Started execution of test case</msg>
+<status status="PASS" starttime="20200712 18:50:30.280" endtime="20200712 18:50:30.280"></status>
+</kw>
+<kw name="InvalidTest">
+<arguments>
+<arg>users/hqopq</arg>
+<arg>404</arg>
+</arguments>
+<kw name="Invalid Users" library="Resources">
+<doc>Valiating the negative test case by using invalid users</doc>
+<arguments>
+<arg>${user}</arg>
+<arg>${expected_code}</arg>
+</arguments>
+<kw name="Create Session" library="RequestsLibrary">
+<doc>Create Session: create a HTTP session to a server</doc>
+<arguments>
+<arg>mysession</arg>
+<arg>${base_url}</arg>
+</arguments>
+<msg timestamp="20200712 18:50:30.280" level="INFO">Creating Session using : alias=mysession, url=https://api.github.com, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20200712 18:50:30.280" endtime="20200712 18:50:30.280"></status>
+</kw>
+<kw name="Get Request" library="RequestsLibrary">
+<doc>Send a GET request on the session object found using the
+given `alias`</doc>
+<arguments>
+<arg>mysession</arg>
+<arg>${user}</arg>
+</arguments>
+<assign>
+<var>${response}</var>
+</assign>
+<msg timestamp="20200712 18:50:30.827" level="INFO">GET Request : url=https://api.github.com/users/hqopq 
+ path_url=/users/hqopq 
+ headers={'User-Agent': 'python-requests/2.24.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg timestamp="20200712 18:50:30.827" level="INFO">GET Response : url=https://api.github.com/users/hqopq 
+ status=404, reason=Not Found 
+ body={"message":"Not Found","documentation_url":"https://developer.github.com/v3/users/#get-a-single-user"} 
+ </msg>
+<msg timestamp="20200712 18:50:30.827" level="INFO">c:\users\home\pycharmprojects\training\venv\lib\site-packages\urllib3\connectionpool.py:979: InsecureRequestWarning: Unverified HTTPS request is being made to host 'api.github.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings
+  warnings.warn(</msg>
+<msg timestamp="20200712 18:50:30.827" level="INFO">${response} = &lt;Response [404]&gt;</msg>
+<status status="PASS" starttime="20200712 18:50:30.280" endtime="20200712 18:50:30.827"></status>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<doc>Converts the given item to a Unicode string.</doc>
+<arguments>
+<arg>${response.status_code}</arg>
+</arguments>
+<assign>
+<var>${actual_code}</var>
+</assign>
+<msg timestamp="20200712 18:50:30.827" level="INFO">${actual_code} = 404</msg>
+<status status="PASS" starttime="20200712 18:50:30.827" endtime="20200712 18:50:30.827"></status>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<doc>Fails if the given objects are unequal.</doc>
+<arguments>
+<arg>${actual_code}</arg>
+<arg>${expected_code}</arg>
+</arguments>
+<status status="PASS" starttime="20200712 18:50:30.827" endtime="20200712 18:50:30.827"></status>
+</kw>
+<status status="PASS" starttime="20200712 18:50:30.280" endtime="20200712 18:50:30.827"></status>
+</kw>
+<status status="PASS" starttime="20200712 18:50:30.280" endtime="20200712 18:50:30.842"></status>
+</kw>
+<kw name="Log" library="BuiltIn" type="teardown">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>Completion of executing the test case</arg>
+</arguments>
+<msg timestamp="20200712 18:50:30.842" level="INFO">Completion of executing the test case</msg>
+<status status="PASS" starttime="20200712 18:50:30.842" endtime="20200712 18:50:30.842"></status>
+</kw>
+<status status="PASS" starttime="20200712 18:50:30.264" endtime="20200712 18:50:30.842" critical="yes"></status>
+</test>
+<status status="PASS" starttime="20200712 18:50:27.108" endtime="20200712 18:50:30.842"></status>
+</suite>
+<suite id="s1-s3" name="Uservalidation" source="C:\Users\HOME\PycharmProjects\Training\API_DEMO\Uservalidation.robot">
+<kw name="Log" library="BuiltIn" type="setup">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>&lt;a href="http://localhost:63342/Training/TestData/UsersData.xlsx"&gt;Input Data File&lt;a&gt;</arg>
+<arg>html=True</arg>
+</arguments>
+<msg timestamp="20200712 18:50:29.608" level="INFO" html="yes">&lt;a href="http://localhost:63342/Training/TestData/UsersData.xlsx"&gt;Input Data File&lt;a&gt;</msg>
+<status status="PASS" starttime="20200712 18:50:29.608" endtime="20200712 18:50:29.608"></status>
+</kw>
+<kw name="Log" library="BuiltIn" type="teardown">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>closing the session</arg>
+</arguments>
+<msg timestamp="20200712 18:50:31.592" level="INFO">closing the session</msg>
+<status status="PASS" starttime="20200712 18:50:31.592" endtime="20200712 18:50:31.592"></status>
+</kw>
+<test id="s1-s3-t1" name="Users Test with users/HariniYadav">
+<kw name="Log" library="BuiltIn" type="setup">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>Started execution of test case</arg>
+</arguments>
+<msg timestamp="20200712 18:50:29.623" level="INFO">Started execution of test case</msg>
+<status status="PASS" starttime="20200712 18:50:29.623" endtime="20200712 18:50:29.623"></status>
+</kw>
+<kw name="UserExistenceTest">
+<arguments>
+<arg>users/HariniYadav</arg>
+<arg>200</arg>
+</arguments>
+<kw name="Validate User" library="Resources">
+<doc>Verifying the existence of user account in GITHUB</doc>
+<arguments>
+<arg>${user}</arg>
+<arg>${expected_code}</arg>
+</arguments>
+<kw name="Create Session" library="RequestsLibrary">
+<doc>Create Session: create a HTTP session to a server</doc>
+<arguments>
+<arg>mysession</arg>
+<arg>${base_url}</arg>
+</arguments>
+<msg timestamp="20200712 18:50:29.623" level="INFO">Creating Session using : alias=mysession, url=https://api.github.com, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20200712 18:50:29.623" endtime="20200712 18:50:29.623"></status>
+</kw>
+<kw name="Get Request" library="RequestsLibrary">
+<doc>Send a GET request on the session object found using the
+given `alias`</doc>
+<arguments>
+<arg>mysession</arg>
+<arg>${user}</arg>
+</arguments>
+<assign>
+<var>${response}</var>
+</assign>
+<msg timestamp="20200712 18:50:30.248" level="INFO">GET Request : url=https://api.github.com/users/HariniYadav 
+ path_url=/users/HariniYadav 
+ headers={'User-Agent': 'python-requests/2.24.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg timestamp="20200712 18:50:30.248" level="INFO">GET Response : url=https://api.github.com/users/HariniYadav 
+ status=200, reason=OK 
+ body={"login":"HariniYadav","id":67147998,"node_id":"MDQ6VXNlcjY3MTQ3OTk4","avatar_url":"https://avatars2.githubusercontent.com/u/67147998?v=4","gravatar_id":"","url":"https://api.github.com/users/HariniYadav","html_url":"https://github.com/HariniYadav","followers_url":"https://api.github.com/users/HariniYadav/followers","following_url":"https://api.github.com/users/HariniYadav/following{/other_user}","gists_url":"https://api.github.com/users/HariniYadav/gists{/gist_id}","starred_url":"https://api.github.com/users/HariniYadav/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/HariniYadav/subscriptions","organizations_url":"https://api.github.com/users/HariniYadav/orgs","repos_url":"https://api.github.com/users/HariniYadav/repos","events_url":"https://api.github.com/users/HariniYadav/events{/privacy}","received_events_url":"https://api.github.com/users/HariniYadav/received_events","type":"User","site_admin":false,"name":null,"company":null,"blog":"","location":"Bangalore","email":null,"hireable":null,"bio":null,"twitter_username":null,"public_repos":3,"public_gists":0,"followers":0,"following":0,"created_at":"2020-06-19T10:20:16Z","updated_at":"2020-07-06T17:40:44Z"} 
+ </msg>
+<msg timestamp="20200712 18:50:30.248" level="INFO">c:\users\home\pycharmprojects\training\venv\lib\site-packages\urllib3\connectionpool.py:979: InsecureRequestWarning: Unverified HTTPS request is being made to host 'api.github.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings
+  warnings.warn(</msg>
+<msg timestamp="20200712 18:50:30.264" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20200712 18:50:29.623" endtime="20200712 18:50:30.264"></status>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<doc>Converts the given item to a Unicode string.</doc>
+<arguments>
+<arg>${response.status_code}</arg>
+</arguments>
+<assign>
+<var>${actual_code}</var>
+</assign>
+<msg timestamp="20200712 18:50:30.264" level="INFO">${actual_code} = 200</msg>
+<status status="PASS" starttime="20200712 18:50:30.264" endtime="20200712 18:50:30.264"></status>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<doc>Fails if the given objects are unequal.</doc>
+<arguments>
+<arg>${actual_code}</arg>
+<arg>${expected_code}</arg>
+</arguments>
+<status status="PASS" starttime="20200712 18:50:30.264" endtime="20200712 18:50:30.264"></status>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<doc>Converts the given item to a Unicode string.</doc>
+<arguments>
+<arg>${response.content}</arg>
+</arguments>
+<assign>
+<var>${body}</var>
+</assign>
+<msg timestamp="20200712 18:50:30.264" level="INFO">${body} = {"login":"HariniYadav","id":67147998,"node_id":"MDQ6VXNlcjY3MTQ3OTk4","avatar_url":"https://avatars2.githubusercontent.com/u/67147998?v=4","gravatar_id":"","url":"https://api.github.com/users/HariniYa...</msg>
+<status status="PASS" starttime="20200712 18:50:30.264" endtime="20200712 18:50:30.264"></status>
+</kw>
+<kw name="Should Not Contain" library="BuiltIn">
+<doc>Fails if ``container`` contains ``item`` one or more times.</doc>
+<arguments>
+<arg>${body}</arg>
+<arg>Not</arg>
+</arguments>
+<status status="PASS" starttime="20200712 18:50:30.264" endtime="20200712 18:50:30.264"></status>
+</kw>
+<status status="PASS" starttime="20200712 18:50:29.623" endtime="20200712 18:50:30.264"></status>
+</kw>
+<status status="PASS" starttime="20200712 18:50:29.623" endtime="20200712 18:50:30.264"></status>
+</kw>
+<kw name="Log" library="BuiltIn" type="teardown">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>Completion of executing the test case</arg>
+</arguments>
+<msg timestamp="20200712 18:50:30.264" level="INFO">Completion of executing the test case</msg>
+<status status="PASS" starttime="20200712 18:50:30.264" endtime="20200712 18:50:30.264"></status>
+</kw>
+<status status="PASS" starttime="20200712 18:50:29.608" endtime="20200712 18:50:30.264" critical="yes"></status>
+</test>
+<test id="s1-s3-t2" name="Users Test with users/Apurva8">
+<kw name="Log" library="BuiltIn" type="setup">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>Started execution of test case</arg>
+</arguments>
+<msg timestamp="20200712 18:50:30.280" level="INFO">Started execution of test case</msg>
+<status status="PASS" starttime="20200712 18:50:30.280" endtime="20200712 18:50:30.280"></status>
+</kw>
+<kw name="UserExistenceTest">
+<arguments>
+<arg>users/Apurva8</arg>
+<arg>200</arg>
+</arguments>
+<kw name="Validate User" library="Resources">
+<doc>Verifying the existence of user account in GITHUB</doc>
+<arguments>
+<arg>${user}</arg>
+<arg>${expected_code}</arg>
+</arguments>
+<kw name="Create Session" library="RequestsLibrary">
+<doc>Create Session: create a HTTP session to a server</doc>
+<arguments>
+<arg>mysession</arg>
+<arg>${base_url}</arg>
+</arguments>
+<msg timestamp="20200712 18:50:30.280" level="INFO">Creating Session using : alias=mysession, url=https://api.github.com, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20200712 18:50:30.280" endtime="20200712 18:50:30.280"></status>
+</kw>
+<kw name="Get Request" library="RequestsLibrary">
+<doc>Send a GET request on the session object found using the
+given `alias`</doc>
+<arguments>
+<arg>mysession</arg>
+<arg>${user}</arg>
+</arguments>
+<assign>
+<var>${response}</var>
+</assign>
+<msg timestamp="20200712 18:50:30.889" level="INFO">GET Request : url=https://api.github.com/users/Apurva8 
+ path_url=/users/Apurva8 
+ headers={'User-Agent': 'python-requests/2.24.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg timestamp="20200712 18:50:30.889" level="INFO">GET Response : url=https://api.github.com/users/Apurva8 
+ status=200, reason=OK 
+ body={"login":"Apurva8","id":30017467,"node_id":"MDQ6VXNlcjMwMDE3NDY3","avatar_url":"https://avatars0.githubusercontent.com/u/30017467?v=4","gravatar_id":"","url":"https://api.github.com/users/Apurva8","html_url":"https://github.com/Apurva8","followers_url":"https://api.github.com/users/Apurva8/followers","following_url":"https://api.github.com/users/Apurva8/following{/other_user}","gists_url":"https://api.github.com/users/Apurva8/gists{/gist_id}","starred_url":"https://api.github.com/users/Apurva8/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/Apurva8/subscriptions","organizations_url":"https://api.github.com/users/Apurva8/orgs","repos_url":"https://api.github.com/users/Apurva8/repos","events_url":"https://api.github.com/users/Apurva8/events{/privacy}","received_events_url":"https://api.github.com/users/Apurva8/received_events","type":"User","site_admin":false,"name":null,"company":null,"blog":"","location":null,"email":null,"hireable":null,"bio":null,"twitter_username":null,"public_repos":1,"public_gists":0,"followers":0,"following":0,"created_at":"2017-07-09T08:17:20Z","updated_at":"2020-07-09T08:03:50Z"} 
+ </msg>
+<msg timestamp="20200712 18:50:30.889" level="INFO">c:\users\home\pycharmprojects\training\venv\lib\site-packages\urllib3\connectionpool.py:979: InsecureRequestWarning: Unverified HTTPS request is being made to host 'api.github.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings
+  warnings.warn(</msg>
+<msg timestamp="20200712 18:50:30.889" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20200712 18:50:30.280" endtime="20200712 18:50:30.889"></status>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<doc>Converts the given item to a Unicode string.</doc>
+<arguments>
+<arg>${response.status_code}</arg>
+</arguments>
+<assign>
+<var>${actual_code}</var>
+</assign>
+<msg timestamp="20200712 18:50:30.889" level="INFO">${actual_code} = 200</msg>
+<status status="PASS" starttime="20200712 18:50:30.889" endtime="20200712 18:50:30.889"></status>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<doc>Fails if the given objects are unequal.</doc>
+<arguments>
+<arg>${actual_code}</arg>
+<arg>${expected_code}</arg>
+</arguments>
+<status status="PASS" starttime="20200712 18:50:30.889" endtime="20200712 18:50:30.889"></status>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<doc>Converts the given item to a Unicode string.</doc>
+<arguments>
+<arg>${response.content}</arg>
+</arguments>
+<assign>
+<var>${body}</var>
+</assign>
+<msg timestamp="20200712 18:50:30.889" level="INFO">${body} = {"login":"Apurva8","id":30017467,"node_id":"MDQ6VXNlcjMwMDE3NDY3","avatar_url":"https://avatars0.githubusercontent.com/u/30017467?v=4","gravatar_id":"","url":"https://api.github.com/users/Apurva8","ht...</msg>
+<status status="PASS" starttime="20200712 18:50:30.889" endtime="20200712 18:50:30.889"></status>
+</kw>
+<kw name="Should Not Contain" library="BuiltIn">
+<doc>Fails if ``container`` contains ``item`` one or more times.</doc>
+<arguments>
+<arg>${body}</arg>
+<arg>Not</arg>
+</arguments>
+<status status="PASS" starttime="20200712 18:50:30.889" endtime="20200712 18:50:30.905"></status>
+</kw>
+<status status="PASS" starttime="20200712 18:50:30.280" endtime="20200712 18:50:30.905"></status>
+</kw>
+<status status="PASS" starttime="20200712 18:50:30.280" endtime="20200712 18:50:30.905"></status>
+</kw>
+<kw name="Log" library="BuiltIn" type="teardown">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>Completion of executing the test case</arg>
+</arguments>
+<msg timestamp="20200712 18:50:30.905" level="INFO">Completion of executing the test case</msg>
+<status status="PASS" starttime="20200712 18:50:30.905" endtime="20200712 18:50:30.905"></status>
+</kw>
+<status status="PASS" starttime="20200712 18:50:30.264" endtime="20200712 18:50:30.905" critical="yes"></status>
+</test>
+<test id="s1-s3-t3" name="Users Test with users/Robin">
+<kw name="Log" library="BuiltIn" type="setup">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>Started execution of test case</arg>
+</arguments>
+<msg timestamp="20200712 18:50:30.905" level="INFO">Started execution of test case</msg>
+<status status="PASS" starttime="20200712 18:50:30.905" endtime="20200712 18:50:30.905"></status>
+</kw>
+<kw name="UserExistenceTest">
+<arguments>
+<arg>users/Robin</arg>
+<arg>200</arg>
+</arguments>
+<kw name="Validate User" library="Resources">
+<doc>Verifying the existence of user account in GITHUB</doc>
+<arguments>
+<arg>${user}</arg>
+<arg>${expected_code}</arg>
+</arguments>
+<kw name="Create Session" library="RequestsLibrary">
+<doc>Create Session: create a HTTP session to a server</doc>
+<arguments>
+<arg>mysession</arg>
+<arg>${base_url}</arg>
+</arguments>
+<msg timestamp="20200712 18:50:30.920" level="INFO">Creating Session using : alias=mysession, url=https://api.github.com, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20200712 18:50:30.920" endtime="20200712 18:50:30.920"></status>
+</kw>
+<kw name="Get Request" library="RequestsLibrary">
+<doc>Send a GET request on the session object found using the
+given `alias`</doc>
+<arguments>
+<arg>mysession</arg>
+<arg>${user}</arg>
+</arguments>
+<assign>
+<var>${response}</var>
+</assign>
+<msg timestamp="20200712 18:50:31.577" level="INFO">GET Request : url=https://api.github.com/users/Robin 
+ path_url=/users/Robin 
+ headers={'User-Agent': 'python-requests/2.24.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg timestamp="20200712 18:50:31.577" level="INFO">GET Response : url=https://api.github.com/users/Robin 
+ status=200, reason=OK 
+ body={"login":"robin","id":6545,"node_id":"MDQ6VXNlcjY1NDU=","avatar_url":"https://avatars3.githubusercontent.com/u/6545?v=4","gravatar_id":"","url":"https://api.github.com/users/robin","html_url":"https://github.com/robin","followers_url":"https://api.github.com/users/robin/followers","following_url":"https://api.github.com/users/robin/following{/other_user}","gists_url":"https://api.github.com/users/robin/gists{/gist_id}","starred_url":"https://api.github.com/users/robin/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/robin/subscriptions","organizations_url":"https://api.github.com/users/robin/orgs","repos_url":"https://api.github.com/users/robin/repos","events_url":"https://api.github.com/users/robin/events{/privacy}","received_events_url":"https://api.github.com/users/robin/received_events","type":"User","site_admin":false,"name":"Lu Yibin","company":"Freelance","blog":"http://robin.github.io","location":"Beijing, China","email":null,"hireable":true,"bio":"Aged Software Engineer\r\nOn\r\nmacOS/iOS/ruby/ruby on rails","twitter_username":null,"public_repos":28,"public_gists":24,"followers":559,"following":16,"created_at":"2008-04-11T08:52:39Z","updated_at":"2020-05-13T07:46:03Z"} 
+ </msg>
+<msg timestamp="20200712 18:50:31.577" level="INFO">c:\users\home\pycharmprojects\training\venv\lib\site-packages\urllib3\connectionpool.py:979: InsecureRequestWarning: Unverified HTTPS request is being made to host 'api.github.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings
+  warnings.warn(</msg>
+<msg timestamp="20200712 18:50:31.577" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20200712 18:50:30.920" endtime="20200712 18:50:31.577"></status>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<doc>Converts the given item to a Unicode string.</doc>
+<arguments>
+<arg>${response.status_code}</arg>
+</arguments>
+<assign>
+<var>${actual_code}</var>
+</assign>
+<msg timestamp="20200712 18:50:31.577" level="INFO">${actual_code} = 200</msg>
+<status status="PASS" starttime="20200712 18:50:31.577" endtime="20200712 18:50:31.577"></status>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<doc>Fails if the given objects are unequal.</doc>
+<arguments>
+<arg>${actual_code}</arg>
+<arg>${expected_code}</arg>
+</arguments>
+<status status="PASS" starttime="20200712 18:50:31.577" endtime="20200712 18:50:31.577"></status>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<doc>Converts the given item to a Unicode string.</doc>
+<arguments>
+<arg>${response.content}</arg>
+</arguments>
+<assign>
+<var>${body}</var>
+</assign>
+<msg timestamp="20200712 18:50:31.577" level="INFO">${body} = {"login":"robin","id":6545,"node_id":"MDQ6VXNlcjY1NDU=","avatar_url":"https://avatars3.githubusercontent.com/u/6545?v=4","gravatar_id":"","url":"https://api.github.com/users/robin","html_url":"https:/...</msg>
+<status status="PASS" starttime="20200712 18:50:31.577" endtime="20200712 18:50:31.577"></status>
+</kw>
+<kw name="Should Not Contain" library="BuiltIn">
+<doc>Fails if ``container`` contains ``item`` one or more times.</doc>
+<arguments>
+<arg>${body}</arg>
+<arg>Not</arg>
+</arguments>
+<status status="PASS" starttime="20200712 18:50:31.577" endtime="20200712 18:50:31.592"></status>
+</kw>
+<status status="PASS" starttime="20200712 18:50:30.905" endtime="20200712 18:50:31.592"></status>
+</kw>
+<status status="PASS" starttime="20200712 18:50:30.905" endtime="20200712 18:50:31.592"></status>
+</kw>
+<kw name="Log" library="BuiltIn" type="teardown">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>Completion of executing the test case</arg>
+</arguments>
+<msg timestamp="20200712 18:50:31.592" level="INFO">Completion of executing the test case</msg>
+<status status="PASS" starttime="20200712 18:50:31.592" endtime="20200712 18:50:31.592"></status>
+</kw>
+<status status="PASS" starttime="20200712 18:50:30.905" endtime="20200712 18:50:31.592" critical="yes"></status>
+</test>
+<status status="PASS" starttime="20200712 18:50:27.139" endtime="20200712 18:50:31.592"></status>
+</suite>
+<doc>[https://pabot.org/?ref=log|Pabot] result from 3 executions.</doc>
+<status status="PASS" starttime="20200712 18:50:26.967" endtime="20200712 18:50:32.499"></status>
+</suite>
+<statistics>
+<total>
+<stat pass="10" fail="0">Critical Tests</stat>
+<stat pass="10" fail="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="10" fail="0" id="s1" name="API DEMO">API DEMO</stat>
+<stat pass="5" fail="0" id="s1-s1" name="GetRepo">API DEMO.GetRepo</stat>
+<stat pass="2" fail="0" id="s1-s2" name="Invalid">API DEMO.Invalid</stat>
+<stat pass="3" fail="0" id="s1-s3" name="Uservalidation">API DEMO.Uservalidation</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
